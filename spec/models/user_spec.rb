@@ -49,4 +49,18 @@ describe User do
     it { is_expected.to allow_value("foo.bar@sub.example.co.id").for(:email) }
   end
 
+  describe "#username" do
+    it "equals to local part of the email upon creation" do
+      user = build :user
+      expect(user).to be_new_record
+
+      local_part = "adam12345_cool"
+      email = "#{local_part}@example.org"
+      user.email = email
+
+      user.save
+
+      expect(user.username).to eq local_part
+    end
+  end
 end
