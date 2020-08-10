@@ -1,10 +1,10 @@
-<% content_for :page_title, "Sign up" %>
+<% content_for :page_title, "Your Profile" %>
 
-<%= form_for @resource, url: sessions_sign_up_path do |f| %>
+<%= form_for @resource, url: profile_path do |f| %>
   <div class="form-group">
     <div class="mb-4">
       <%= f.label :email, "Email" %>
-      <%= f.email_field :email, autofocus: true %>
+      <%= f.email_field :email, autofocus: true, disabled: "disabled" %>
     </div>
 
     <div class="mb-4">
@@ -13,18 +13,18 @@
     </div>
 
     <div class="mb-4">
-      <%= f.label :confirmation_password, "Confirmation password" %>
-      <%= f.password_field :confirmation_password, autofocus: true %>
+      <%= f.label :username, "Username" %>
+      <%= f.text_field :username, autofocus: true %>
     </div>
 
     <div class="flex items-center justify-between">
-      <%= f.submit "Sign up", class: "cta-btn" %>
+      <%= f.submit "Save changes", class: "cta-btn" %>
     </div>
   </div>
 <% end %>
 
 <div class="text-center">
   <p class="text-grey-500 text-sm">
-    Already have an account? <%= link_to "Sign in", sessions_sign_in_path %>
+    <%= link_to "Sign out", sessions_sign_in_path %>
   </p>
 </div>

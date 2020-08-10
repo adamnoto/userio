@@ -33,6 +33,10 @@
   @apply border-gray-300;
 }
 
+.form-group input[disabled] {
+  @apply bg-gray-200;
+}
+
 .form-group select {
   @apply px-2 py-2;
   @apply pr-8;

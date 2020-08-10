@@ -1,4 +1,6 @@
 class Sessions::SignUpController < Sessions::BaseController
+  before_action :redirect_if_signed_in!
+
   def new
     @resource = User.new
   end
@@ -6,7 +8,11 @@ class Sessions::SignUpController < Sessions::BaseController
   def create
     @resource = User.new permitted_params
 
-    unless @resource.valid?
+    if @resource.valid?
+      @resource.save!
+      setup_cookies_for_user @resource
+      redirect_if_signed_in!
+    else
       flash[:alert] = @resource.errors.full_messages.join(". ")
       render "new"
     end
@@ -15,7 +21,7 @@ class Sessions::SignUpController < Sessions::BaseController
   private
 
     def permitted_params
-      params.require(:user).permit(:email, :password)
+      params.require(:user).permit(:email, :password, :confirmation_password)
     end
 
 end

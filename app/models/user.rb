@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validate :validate_password_matches_with_confirmation, if: :new_record?
 
   before_save :normalize_email, if: :email_changed?
+  before_create :assign_username_from_email
 
   def valid_password? passed_password
     password == "#{passed_password}#{salt}"
@@ -53,6 +54,10 @@ class User < ApplicationRecord
       return if @raw_password == confirmation_password
 
       errors.add :confirmation_password, "does not match with the password"
+    end
+
+    def assign_username_from_email
+      write_attribute :username, email.split("@").first
     end
 
 end

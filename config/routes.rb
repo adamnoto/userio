@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: "home#index"
 
+  resource :profile, only: [:show, :update]
+
   namespace :sessions do
     get "/sign_out", to: "sessions#destroy"
 
