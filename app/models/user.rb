@@ -20,17 +20,17 @@ class User < ApplicationRecord
     end
   end
 
+  def password
+    return unless password_hash
+
+    @password ||= BCrypt::Password.new(password_hash)
+  end
+
   private
 
     def normalize_email
       # note: ensuring adamnoto@hey.com and ADAMNOTO@hey.com are of the same account
       write_attribute :email, email.downcase
-    end
-
-    def password
-      return unless password_hash
-
-      @password ||= BCrypt::Password.new(password_hash)
     end
 
     def validate_password_decryptable

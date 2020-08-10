@@ -1,0 +1,55 @@
+.form-group {
+  @apply border-main;
+}
+
+.form-group label {
+  @apply font-normal text-gray-600 block mb-2;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group select {
+  @apply block appearance-none w-full bg-white;
+  @apply border border-gray-200;
+  @apply rounded shadow;
+  @apply px-2 py-2;
+  @apply text-gray-700;
+  line-height: 24px;
+  font-size: 16px;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus,
+.form-group select:focus {
+  @apply outline-none;
+}
+
+.form-group input[type="text"]:hover,
+.form-group input[type="email"]:hover,
+.form-group input[type="password"]:hover,
+.form-group select:focus {
+  @apply border-gray-300;
+}
+
+.form-group select {
+  @apply px-2 py-2;
+  @apply pr-8;
+  background: transparent;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 2% center;
+}
+
+.cta-btn {
+  @apply select-none text-white font-bold;
+  @apply rounded shadow;
+  @apply py-2 px-5;
+  @apply bg-main;
+  cursor: pointer;
+}
+
+.cta-btn:hover {
+  filter: brightness(102%);
+}
