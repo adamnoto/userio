@@ -32,6 +32,12 @@ A user microservice. Stack used:
 
    To stop it, just press Ctrl + C
 
+1. To execute the test suite:
+
+   ```
+   $ bundle exec rspec
+   ```
+
 ## Strict requirements
 
 - [x] As a user, I can visit sign up page and sign up with my email (with valid format and unique in database) and password (with confirmation and at least eight characters).
