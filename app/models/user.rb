@@ -12,6 +12,8 @@ class User < ApplicationRecord
   before_save :normalize_email, if: :email_changed?
   before_create :assign_username_from_email
 
+  has_many :password_reset_tokens
+
   def valid_password? passed_password
     password == "#{passed_password}#{salt}"
   end
