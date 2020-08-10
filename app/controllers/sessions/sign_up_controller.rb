@@ -10,6 +10,7 @@ class Sessions::SignUpController < Sessions::BaseController
 
     if @resource.valid?
       @resource.save!
+      UserMailer.welcome_email.deliver_now
       setup_cookies_for_user @resource
       redirect_if_signed_in!
     else

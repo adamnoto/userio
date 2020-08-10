@@ -3,11 +3,121 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
-      /* Email styles need to be inline */
+      body {
+        font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;
+      }
+
+      .content {
+        background: #60b0e2;
+        background: #e0f3ff;
+        text-align: center;
+        width: 100%;
+        padding: 0;
+      }
+
+      .container {
+        text-align: left;
+        display: inline-block;
+        width: 100%;
+        max-width: 600px;
+        min-width: 280px;
+      }
+
+      .line {
+        padding: 0;
+        display: block;
+        height: 2px;
+      }
+      .top.line { background: #f6f6f6; }
+      .bottom.line { background: #eaeaea; }
+
+      .card-outset {
+        border-radius: 15px;
+      }
+
+      .card-inset {
+        padding: 24px 32px 24px 32px;
+        color: #444;
+        background:#fff;
+        padding-bottom: 55px;
+      }
+
+      .header {
+        padding: 24px 32px;
+        padding-top: 30px;
+        padding-bottom: 40px;
+      }
+
+      .header h1.title {
+        font-weight: 100;
+        color: #5e7684;
+        padding: 0;
+        margin-bottom: 0;
+      }
+
+      .footer {
+        background: #eaeaea;
+        padding: 15px 32px 15px 32px;
+        margin-bottom: 40px;
+      }
+
+      .footer p {
+        margin-top: 3px;
+        margin-bottom: 3px;
+        font-size: 0.9em;
+      }
+
+      .footer a {
+        color: gray;
+        text-decoration: none;
+        border-bottom: 1px dotted #bcbcbc;
+      }
+
+      .button {
+        display: inline-block !important;
+        background: #60b0e2 !important;
+        color: #fafafa !important;
+        font-weight: 500 !important;
+        border-radius: 0.25rem !important;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+        padding: 0.5rem 1rem !important;
+        text-decoration: none !important;
+      }
+
+      p {
+        line-height: 24px;
+      }
+
+      h2 {
+        font-weight: 100;
+      }
+
+      .light {
+        color: gray;
+      }
     </style>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="content">
+      <div class="container">
+        <div class="card-outset">
+          <div class="header">
+            <h1 class="title">UserIO</h1>
+          </div>
+
+          <div class="card-inset">
+            <%= yield %>
+          </div>
+
+          <div class="footer">
+            <p class="light">Please hit us up with any questions at hello@userio.com</p>
+            <p class="light">
+              © <%= Date.today.year %> UserIO.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

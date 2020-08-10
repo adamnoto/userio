@@ -13,7 +13,8 @@ describe "Sign up" do
     expect(page).to have_content "Confirmation password does not match"
   end
 
-  scenario "Signing up correctly: see profile page" do
+  scenario "Signing up correctly: see profile page and expect to receive email" do
+    expect(ActionMailer::Base.deliveries).to be_blank
     visit sessions_sign_up_path
 
     fill_in "Email", with: "adam@example.org"
@@ -23,5 +24,7 @@ describe "Sign up" do
 
     expect(current_path).to eq profile_path
     expect(page).to have_content "Sign out"
+
+    expect(ActionMailer::Base.deliveries.map(&:subject)).to eq ["Welcome email"]
   end
 end
