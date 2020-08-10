@@ -1,0 +1,14 @@
+<% content_for :page_title, "Reset password" %>
+
+<%= form_for @user, url: sessions_reset_password_path, method: :post do |f| %>
+  <div class="form-group">
+    <div class="mb-4">
+      <%= f.label :password, "Password" %>
+      <%= f.password_field :password, autofocus: true %>
+    </div>
+
+    <div class="flex items-center justify-between">
+      <%= f.submit "Reset my password", class: "cta-btn w-full" %>
+    </div>
+  </div>
+<% end %>
