@@ -5,10 +5,11 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.welcome_email.subject
   #
-  def welcome_email
+  def welcome_email(user)
     @greeting = "Hi"
 
-    mail to: "to@example.org"
+    mail to: user.email, subject: "Welcome to UserIO"
+  end
 
   def reset_password_email(token)
     @password_reset_token = token

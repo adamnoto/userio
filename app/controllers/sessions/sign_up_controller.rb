@@ -10,7 +10,11 @@ class Sessions::SignUpController < Sessions::BaseController
 
     if @resource.valid?
       @resource.save!
-      UserMailer.welcome_email.deliver_now
+
+      # normally, we should use deliver_later and use a background
+      # job to send the email.
+      UserMailer.welcome_email(@resource).deliver_now
+
       setup_cookies_for_user @resource
       redirect_if_signed_in!
     else

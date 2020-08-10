@@ -25,6 +25,6 @@ describe "Sign up" do
     expect(current_path).to eq profile_path
     expect(page).to have_content "Sign out"
 
-    expect(ActionMailer::Base.deliveries.map(&:subject)).to eq ["Welcome email"]
+    expect(ActionMailer::Base.deliveries.map(&:subject)).to eq ["Welcome to UserIO"]
   end
 end
