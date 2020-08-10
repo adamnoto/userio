@@ -12,6 +12,20 @@ describe User do
     end
   end
 
+  describe "#password" do
+    it "is valid if at least 8-characters long" do
+      user = build :user
+      user.password = user.confirmation_password = "1234567"
+      expect(user).not_to be_valid
+
+      user.password = user.confirmation_password = "12345678"
+      expect(user).to be_valid
+
+      user.password = user.confirmation_password = "1" * 10
+      expect(user).to be_valid
+    end
+  end
+
   describe "#email" do
     it "is lowercased when saved" do
       expect(user).to be_valid

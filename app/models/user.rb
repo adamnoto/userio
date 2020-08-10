@@ -28,7 +28,7 @@ class User < ApplicationRecord
   def password
     return unless password_hash
 
-    @password ||= BCrypt::Password.new(password_hash)
+    BCrypt::Password.new(password_hash)
   end
 
   private
@@ -39,7 +39,7 @@ class User < ApplicationRecord
     end
 
     def validate_password_decryptable
-      unless password == "#{@raw_password}#{salt}"
+      unless valid_password? @raw_password
         errors.add :password_hash, "undecryptable"
       end
     end
