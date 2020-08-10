@@ -4,12 +4,17 @@
   <div class="form-group">
     <div class="mb-4">
       <%= f.label :email, "Email" %>
-      <%= f.text_field :email, autofocus: true %>
+      <%= f.email_field :email, autofocus: true %>
     </div>
 
     <div class="mb-4">
       <%= f.label :password, "Password" %>
-      <%= f.text_field :password, autofocus: true %>
+      <%= f.password_field :password, autofocus: true %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.label :password_confirmation, "Password" %>
+      <%= f.password_field :password_confirmation, autofocus: true %>
     </div>
 
     <div class="flex items-center justify-between">

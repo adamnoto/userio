@@ -4,6 +4,18 @@ class Sessions::SignUpController < Sessions::BaseController
   end
 
   def create
-    raise NotImplementedError
+    @resource = User.new permitted_params
+
+    unless @resource.valid?
+      flash[:alert] = @resource.errors.full_messages.join(". ")
+      render "new"
+    end
   end
+
+  private
+
+    def permitted_params
+      params.require(:user).permit(:email, :password)
+    end
+
 end

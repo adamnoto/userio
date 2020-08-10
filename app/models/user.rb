@@ -1,8 +1,12 @@
 class User < ApplicationRecord
+  attr_accessor :confirmation_password
+
   validates :email, uniqueness: true
   validates_format_of :email, with: URI::MailTo::EMAIL_REGEXP,
     message: "must be a valid email address"
   validate :validate_password_decryptable, if: :password_hash_changed?
+  validate :validate_password_length, if: :password_hash_changed?
+  validate :validate_password_matches_with_confirmation, if: :new_record?
 
   before_save :normalize_email, if: :email_changed?
 
@@ -37,6 +41,18 @@ class User < ApplicationRecord
       unless password == "#{@raw_password}#{salt}"
         errors.add :password_hash, "undecryptable"
       end
+    end
+
+    def validate_password_length
+      return if @raw_password.length >= 8
+
+      errors.add :password, "too short, must be at least 8-characters long"
+    end
+
+    def validate_password_matches_with_confirmation
+      return if @raw_password == confirmation_password
+
+      errors.add :confirmation_password, "does not match with the password"
     end
 
 end
