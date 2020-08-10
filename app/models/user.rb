@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validate :validate_password_decryptable, if: :password_hash_changed?
   validate :validate_password_length, if: :password_hash_changed?
   validate :validate_password_matches_with_confirmation, if: :new_record?
+  validates :username, length: { minimum: 5 }, unless: :new_record?
 
   before_save :normalize_email, if: :email_changed?
   before_create :assign_username_from_email

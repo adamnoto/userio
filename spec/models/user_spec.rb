@@ -50,17 +50,39 @@ describe User do
   end
 
   describe "#username" do
-    it "equals to local part of the email upon creation" do
-      user = build :user
-      expect(user).to be_new_record
+    context "when new record" do
+      it "equals to local part of the email" do
+        user = build :user
+        expect(user).to be_new_record
 
-      local_part = "adam12345_cool"
-      email = "#{local_part}@example.org"
-      user.email = email
+        local_part = "adam12345_cool"
+        email = "#{local_part}@example.org"
+        user.email = email
 
-      user.save
+        user.save
 
-      expect(user.username).to eq local_part
+        expect(user.username).to eq local_part
+      end
+
+      it "tolerates username less than 5 characters long" do
+        expect {
+          create :user, email: "abcd@example.org"
+        }.to change {
+          User.find_by_email("abcd@example.org")
+        }.from(nil).and change {
+          User.find_by_username("abcd")
+        }.from(nil)
+      end
+    end
+
+    context "when not new record" do
+      it "enforces length requirement" do
+        user = create :user
+        user.username = "abcd"
+        expect(user).not_to be_valid
+        user.username = "abcde"
+        expect(user).to be_valid
+      end
     end
   end
 end

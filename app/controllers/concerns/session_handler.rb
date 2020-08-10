@@ -29,9 +29,11 @@ module SessionHandler
   end
 
   def current_user
-    user_id = cookies.permanent[SESSION_COOKIE_NAME]
-    user_id = session_verifier.verify user_id
-    User.find user_id
+    @current_user ||= begin
+      user_id = cookies.permanent[SESSION_COOKIE_NAME]
+      user_id = session_verifier.verify user_id
+      User.find user_id
+    end
   rescue ActiveSupport::MessageVerifier::InvalidSignature
     nil
   end
