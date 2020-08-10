@@ -1,0 +1,20 @@
+<% content_for :page_title, "Reset password" %>
+
+<%= form_for User.new, url: sessions_reset_token_path, method: :post do |f| %>
+  <div class="form-group">
+    <div class="mb-4">
+      <%= f.label :email, "Email" %>
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+
+    <div class="flex items-center justify-between">
+      <%= f.submit "Send me reset password instruction", class: "cta-btn w-full" %>
+    </div>
+  </div>
+<% end %>
+
+<div class="text-center">
+  <p class="text-grey-500 text-sm">
+    Remember the password? <%= link_to "Sign in", sessions_sign_in_path %>
+  </p>
+</div>

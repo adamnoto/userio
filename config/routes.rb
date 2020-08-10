@@ -15,6 +15,16 @@ Rails.application.routes.draw do
       get "/", to: "sign_in#new"
       post "/", to: "sign_in#create"
     end
+
+    resource :reset_token, only: [] do
+      get "/", to: "reset_token#new"
+      post "/", to: "reset_token#create"
+    end
+
+    resources :reset_password, only: [] do
+      get "/", to: "reset_passwords#show"
+      post "/", to: "reset_passwords#update"
+    end
   end
 
 end
