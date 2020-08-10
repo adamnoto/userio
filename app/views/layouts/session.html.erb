@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>UserIO</title>
+    <title>UserIO - <%= yield :page_title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -14,8 +14,8 @@
       <div class="m-auto w-84 md:w-96">
         <%= render "layouts/alert" %>
 
-        <h1 class="title md:hidden mb-6">
-          <%= content_for :page_title %>
+        <h1 class="title mb-6">
+          <%= yield :page_title %>
         </h1>
 
         <%= yield %>
