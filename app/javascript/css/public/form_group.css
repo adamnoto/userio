@@ -57,3 +57,8 @@
 .cta-btn:hover {
   filter: brightness(102%);
 }
+
+.form-group
+p.error {
+  @apply text-red-600 mt-1 mb-3;
+}

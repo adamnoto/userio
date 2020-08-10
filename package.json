@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
     "@fluentui/react": "^7.126.2",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
@@ -20,7 +21,6 @@
     "redux": "^4.0.5",
     "styled-components": "^5.1.1",
     "tailwindcss": "^1.6.2",
-    "ts-loader": "^8.0.2",
     "turbolinks": "^5.2.0",
     "typescript": "^3.9.7",
     "yup": "^0.29.3"

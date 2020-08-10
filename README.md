@@ -4,10 +4,8 @@ A user microservice. Stack used:
 
 - Mostly vanilla Rails
 - React (on some page)
-- Formik + Fluent UI (on some part)
+- Formik + Yup for validation
 - Tailwind CSS (overall layouting and controls)
-
-The profile page demonstrates React + Formik + FluentUI, where other pages are server-rendered. TailwindCSS is used to help style the overall layout and look-and-feel.
 
 ## Setup
 

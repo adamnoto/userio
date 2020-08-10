@@ -1,30 +1,12 @@
 <% content_for :page_title, "Your Profile" %>
 
-<%= form_for @resource, url: profile_path do |f| %>
-  <div class="form-group">
-    <div class="mb-4">
-      <%= f.label :email, "Email" %>
-      <%= f.email_field :email, autofocus: true, disabled: "disabled" %>
-    </div>
-
-    <div class="mb-4">
-      <%= f.label :password, "Password" %>
-      <%= f.password_field :password, autofocus: true %>
-    </div>
-
-    <div class="mb-4">
-      <%= f.label :username, "Username" %>
-      <%= f.text_field :username, autofocus: true %>
-    </div>
-
-    <div class="flex items-center justify-between">
-      <%= f.submit "Save changes", class: "cta-btn" %>
-    </div>
-  </div>
-<% end %>
+<div id="renderable" data-user="<%= @resource.attributes.slice("id", "email", "username").to_json %>">
+</div>
 
 <div class="text-center">
   <p class="text-grey-500 text-sm">
     <%= link_to "Sign out", sessions_sign_out_path %>
   </p>
 </div>
+
+<%= javascript_pack_tag 'profile' %>

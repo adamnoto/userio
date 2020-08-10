@@ -14,11 +14,10 @@ class ProfilesController < ApplicationController
     change_requests.delete :password if change_requests[:password].blank?
 
     if current_user.update change_requests
-      flash[:notice] = "Profile updated successfully"
+      head :ok
     else
-      flash[:alert] = current_user.errors.full_messages.join(". ")
+      head 500
     end
-    redirect_to profile_path
   end
 
   private
