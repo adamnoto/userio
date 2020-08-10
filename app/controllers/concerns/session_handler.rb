@@ -41,4 +41,8 @@ module SessionHandler
 
     redirect_to profile_path
   end
+
+  def sign_out!
+    cookies.delete SESSION_COOKIE_NAME
+  end
 end
