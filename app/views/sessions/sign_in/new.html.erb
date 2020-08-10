@@ -1,0 +1,25 @@
+<% content_for :page_title, "Sign in" %>
+
+<%= form_for @user || User.new, url: sessions_sign_in_path, method: :post do |f| %>
+  <div class="form-group">
+    <div class="mb-4">
+      <%= f.label :email, "Email" %>
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.label :password, "Password" %>
+      <%= f.password_field :password, autofocus: true %>
+    </div>
+
+    <div class="flex items-center justify-between">
+      <%= f.submit "Sign in", class: "cta-btn" %>
+    </div>
+  </div>
+<% end %>
+
+<div class="text-center">
+  <p class="text-grey-500 text-sm">
+    Don't have an account? <%= link_to "Sign up", sessions_sign_up_path %>
+  </p>
+</div>
